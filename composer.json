@@ -1,0 +1,25 @@
+{
+    "name":         "jsvrcek/ics-bundle",
+    "description":  "This bundle provides an integration of the JsvrcekICS iCal library",
+    "keywords":     ["ical", "calendar", "export", ".ics"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "homepage": "https://github.com/jasvrcek/ICS",
+    "authors":  [
+        {
+            "name": "Justin Svrcek",
+            "homepage": "https://github.com/jasvrcek"
+        }
+    ],
+    "require":      {
+        "jsvrcek/ics":         		"*",
+        "symfony/framework-bundle": ">=2.0,<2.2-dev"
+    },
+    "autoload":     {
+        "psr-0": { "Jsvrcek\\Bundle\\IcsBundle": "" }
+    },
+    "target-dir": "Jsvrcek/Bundle/IcsBundle",
+    "require-dev": {
+        "phpunit/phpunit": "3.6.*"
+    }
+}
