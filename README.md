@@ -9,7 +9,7 @@ Add on composer.json (see http://getcomposer.org/)
 
     "require" :  {
         // ...
-        "knplabs/knp-menu-bundle":"dev-master",
+        "jsvrcek/ics-bundle":"*",
     }
 
 ## Usage
