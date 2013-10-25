@@ -7,7 +7,7 @@
     <services>
         <service id="jsvrcek_ics.export" class="Jsvrcek\ICS\CalendarExport">
             <argument type="service" id="jsvrcek_ics.stream" />
-            <argument type="service" id="jsvrcek_ics.formatter" />
+            <argument type="service" id="jsvrcek_ics.utility.formatter" />
         </service>
         <service id="jsvrcek_ics.stream" class="Jsvrcek\ICS\CalendarStream"/>
         <service id="jsvrcek_ics.utility.formatter" class="Jsvrcek\ICS\Utility\Formatter"/>
