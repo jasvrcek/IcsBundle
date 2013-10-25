@@ -1,6 +1,6 @@
 {
     "name":         "jsvrcek/ics-bundle",
-    "description":  "This bundle provides an integration of the JsvrcekICS iCal library",
+    "description":  "This bundle provides a dependency injection wrapper for the JsvrcekICS iCal library",
     "keywords":     ["ical", "calendar", "export", ".ics"],
     "type":         "symfony-bundle",
     "license":      "MIT",
