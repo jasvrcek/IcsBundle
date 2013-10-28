@@ -21,7 +21,7 @@ This bundle integrates the Jsvrcek\ICS library with the Symfony dependency injec
     use Jsvrcek\ICS\Model\Relationship\Attendee;
     use Jsvrcek\ICS\Utility\Formatter;
 
-    $attendee = new Attendee(new Formatter);
+    $attendee = new Attendee(new Formatter());
 
 you can instead, in your Symfony controller, use:
 
