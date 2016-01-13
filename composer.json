@@ -12,14 +12,11 @@
         }
     ],
     "require":      {
-        "jsvrcek/ics":         		"*",
+        "jsvrcek/ics":         		"~0.1",
         "symfony/framework-bundle": ">=2.0"
     },
     "autoload":     {
         "psr-0": { "Jsvrcek\\Bundle\\IcsBundle": "" }
     },
-    "target-dir": "Jsvrcek/Bundle/IcsBundle",
-    "require-dev": {
-        "phpunit/phpunit": "3.6.*"
-    }
+    "target-dir": "Jsvrcek/Bundle/IcsBundle"
 }
