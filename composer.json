@@ -12,7 +12,7 @@
         }
     ],
     "require":      {
-        "jsvrcek/ics":         		"~0.1",
+        "jsvrcek/ics":         	    "dev-master",
         "symfony/framework-bundle": ">=2.0"
     },
     "autoload":     {
