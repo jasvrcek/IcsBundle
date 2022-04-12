@@ -25,4 +25,9 @@ class JsvrcekIcsExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
+
+    public function getAlias(): string
+    {
+        return 'jsvrcek_ics';
+    }
 }

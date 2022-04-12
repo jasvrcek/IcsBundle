@@ -1,31 +1,44 @@
 <?xml version="1.0" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <container xmlns="http://symfony.com/schema/dic/services"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service shared="false" id="jsvrcek_ics.export" class="Jsvrcek\ICS\CalendarExport" public="true">
+
+
+        <service id="jsvrcek_ics.stream" class="Jsvrcek\ICS\CalendarStream" />
+        <service id="Jsvrcek\ICS\CalendarStream" alias="jsvrcek_ics.stream" />
+
+        <service id="jsvrcek_ics.utility.formatter" class="Jsvrcek\ICS\Utility\Formatter" public="true"/>
+        <service alias="jsvrcek_ics.utility.formatter" id="Jsvrcek\ICS\Utility\Formatter" />
+
+        <service id="jsvrcek_ics.export" class="Jsvrcek\ICS\CalendarExport" public="true" >
             <argument type="service" id="jsvrcek_ics.stream" />
             <argument type="service" id="jsvrcek_ics.utility.formatter" />
         </service>
-        <service shared="false" id="jsvrcek_ics.stream" class="Jsvrcek\ICS\CalendarStream"/>
-        <service shared="false" id="jsvrcek_ics.utility.formatter" class="Jsvrcek\ICS\Utility\Formatter"/>
 
-        <service shared="false" id="jsvrcek_ics.model.calendar" class="Jsvrcek\ICS\Model\Calendar"/>
-        <service shared="false" id="jsvrcek_ics.model.calendar_alarm" class="Jsvrcek\ICS\Model\CalendarAlarm"/>
-        <service shared="false" id="jsvrcek_ics.model.calendar_event" class="Jsvrcek\ICS\Model\CalendarEvent"/>
-        <service shared="false" id="jsvrcek_ics.model.calendar_free_busy" class="Jsvrcek\ICS\Model\CalendarFreeBusy"/>
-        <service shared="false" id="jsvrcek_ics.model.calendar_todo" class="Jsvrcek\ICS\Model\CalendarTodo"/>
-
-        <service shared="false" id="jsvrcek_ics.model.relationship.attendee" class="Jsvrcek\ICS\Model\Relationship\Attendee">
-        	<argument type="service" id="jsvrcek_ics.utility.formatter"/>
-        </service>
-        <service shared="false" id="jsvrcek_ics.model.relationship.organizer" class="Jsvrcek\ICS\Model\Relationship\Organizer">
-        	<argument type="service" id="jsvrcek_ics.utility.formatter"/>
+        <service id="Jsvrcek\ICS\CalendarExport" alias="jsvrcek_ics.export" public="false">
         </service>
 
-        <service shared="false" id="jsvrcek_ics.model.description.geo" class="Jsvrcek\ICS\Model\Description\Geo"/>
-        <service shared="false" id="jsvrcek_ics.model.description.location" class="Jsvrcek\ICS\Model\Description\Location"/>
+        <service id="jsvrcek_ics.model.calendar" class="Jsvrcek\ICS\Model\Calendar"/>
+        <service id="jsvrcek_ics.model.calendar_alarm" class="Jsvrcek\ICS\Model\CalendarAlarm"/>
+        <service id="jsvrcek_ics.model.calendar_event" class="Jsvrcek\ICS\Model\CalendarEvent"/>
+        <service id="jsvrcek_ics.model.calendar_free_busy" class="Jsvrcek\ICS\Model\CalendarFreeBusy"/>
+        <service id="jsvrcek_ics.model.calendar_todo" class="Jsvrcek\ICS\Model\CalendarTodo"/>
+
+        <service id="jsvrcek_ics.model.relationship.attendee" class="Jsvrcek\ICS\Model\Relationship\Attendee">
+        	<argument type="service" id="jsvrcek_ics.utility.formatter"/>
+        </service>
+        <service id="jsvrcek_ics.model.relationship.organizer" class="Jsvrcek\ICS\Model\Relationship\Organizer">
+        	<argument type="service" id="jsvrcek_ics.utility.formatter"/>
+        </service>
+
+        <service id="jsvrcek_ics.model.description.geo" class="Jsvrcek\ICS\Model\Description\Geo"/>
+        <service id="jsvrcek_ics.model.description.location" class="Jsvrcek\ICS\Model\Description\Location"/>
+
+
+
     </services>
 </container>
