@@ -18,7 +18,5 @@
     },
     "autoload":     {
         "psr-4": { "Jsvrcek\\Bundle\\IcsBundle\\": "" }
-    },
-
-    "target-dir": "Jsvrcek/Bundle/IcsBundle"
+    }
 }

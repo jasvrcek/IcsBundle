@@ -5,6 +5,9 @@ Symfony Bundle providing dependency injection for the Jsvrcek\ICS library, which
 
 ## Installation
 
+composer config repositories.ics_bundle '{"type": "vcs", "url": "git@github.com:tacman/IcsBundle.git"}'
+composer req jsvrcek/ics-bundle:dev-tac
+
 Add on composer.json (see http://getcomposer.org/)
 
     "require" :  {
