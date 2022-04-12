@@ -19,11 +19,6 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('jsvrcek_ics');
 
-        // bc layer for symfony/config 4.1 and older
-        if (false === \method_exists($treeBuilder, 'getRootNode')) {
-            $treeBuilder->root('jsvrcek_ics');
-        }
-
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
