@@ -5,6 +5,9 @@ Symfony Bundle providing dependency injection for the Jsvrcek\ICS library, which
 
 ## Installation
 
+composer config repositories.ics_bundle '{"type": "vcs", "url": "git@github.com:tacman/IcsBundle.git"}'
+composer req jsvrcek/ics-bundle:dev-tac
+
 Add on composer.json (see http://getcomposer.org/)
 
     "require" :  {
@@ -26,16 +29,34 @@ This bundle integrates the Jsvrcek\ICS library with the Symfony dependency injec
 you can instead, in your Symfony controller, use:
 
     namespace Acme\HelloBundle\Controller;
+    private Formatter $formatter;
+    private CalendarExport $calendarExport;
 
     class HelloController
     {
-        public function calendarAction()
+
+    public function __construct(Formatter $formatter, CalendarExport $calendarExport) {
+
+        $this->formatter = $formatter;
+        $this->calendarExport = $calendarExport;
+    }
+
+
+    // or inject them into the controller
+
+        public function calendarAction(Formatter $formatter, CalendarExport $calendarExport)
         {
-            $attendee = $this->get('jsvrcek_ics.model.relationship.attendee');
-            ...
-            
-            $calendarExport = $this->get('jsvrcek_ics.export');
-            ...
+        $eventOne = new CalendarEvent();
+        $eventOne->setStart(new \DateTime())
+            ->setSummary('Family reunion')
+            ->setUid('event-uid');
+
+        //add an Attendee
+        $attendee = new Attendee($this->formatter); // or $formatter
+        $attendee->setValue('moe@example.com')
+            ->setName('Moe Smith');
+        $eventOne->addAttendee($attendee);
+
             
             $response = new Response($calendarExport->getStream());
             $response->headers->set('Content-Type', 'text/calendar');
