@@ -13,20 +13,18 @@ Symfony Bundle providing dependency injection for the Jsvrcek\ICS library, which
 ```php
 namespace App\Services;
 
-private Formatter $formatter;
-private CalendarExport $calendarExport;
-
 class MyService
 {
+    private Formatter $formatter;
+    private CalendarExport $calendarExport;
+    
     public function __construct(Formatter $formatter, CalendarExport $calendarExport) {
         $this->formatter = $formatter;
         $this->calendarExport = $calendarExport;
     }
 }
 ```    
-
-
-    // or inject them into the controller
+Or inject them into the controller
 ```php
 public function calendarAction(Formatter $formatter, CalendarExport $calendarExport)
 {
