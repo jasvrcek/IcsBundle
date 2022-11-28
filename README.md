@@ -5,8 +5,9 @@ Symfony Bundle providing dependency injection for the Jsvrcek\ICS library, which
 
 ## Installation
 
+```bash
 composer req jsvrcek/ics-bundle
-
+```
 
 ## Usage
 
