@@ -5,34 +5,17 @@ Symfony Bundle providing dependency injection for the Jsvrcek\ICS library, which
 
 ## Installation
 
-composer config repositories.ics_bundle '{"type": "vcs", "url": "git@github.com:tacman/IcsBundle.git"}'
-composer req jsvrcek/ics-bundle:dev-tac
+composer req jsvrcek/ics-bundle
 
-Add on composer.json (see http://getcomposer.org/)
-
-    "require" :  {
-        // ...
-        "jsvrcek/ics-bundle":"*",
-    }
 
 ## Usage
 
-See https://github.com/jasvrcek/ICS/blob/master/README.md
-
-This bundle integrates the Jsvrcek\ICS library with the Symfony dependency injection component, so instead of the example in the above doc:
-
-    use Jsvrcek\ICS\Model\Relationship\Attendee;
-    use Jsvrcek\ICS\Utility\Formatter;
-
-    $attendee = new Attendee(new Formatter());
-
-you can instead, in your Symfony controller, use:
-
-    namespace Acme\HelloBundle\Controller;
+```php
+    namespace App\Services;
     private Formatter $formatter;
     private CalendarExport $calendarExport;
 
-    class HelloController
+    class MyService
     {
 
     public function __construct(Formatter $formatter, CalendarExport $calendarExport) {
@@ -40,9 +23,11 @@ you can instead, in your Symfony controller, use:
         $this->formatter = $formatter;
         $this->calendarExport = $calendarExport;
     }
+```    
 
 
     // or inject them into the controller
+```php
 
         public function calendarAction(Formatter $formatter, CalendarExport $calendarExport)
         {
