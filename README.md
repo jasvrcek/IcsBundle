@@ -12,6 +12,13 @@ composer req jsvrcek/ics-bundle
 
 ```php
     namespace App\Services;
+
+    use Jsvrcek\ICS\CalendarExport;
+    use Jsvrcek\ICS\Model\Calendar;
+    use Jsvrcek\ICS\Model\CalendarEvent;
+    use Jsvrcek\ICS\Model\Relationship\Attendee;
+    use Jsvrcek\ICS\Utility\Formatter;
+
     private Formatter $formatter;
     private CalendarExport $calendarExport;
 
@@ -31,17 +38,22 @@ composer req jsvrcek/ics-bundle
 
         public function calendarAction(Formatter $formatter, CalendarExport $calendarExport)
         {
-        $eventOne = new CalendarEvent();
-        $eventOne->setStart(new \DateTime())
-            ->setSummary('Family reunion')
-            ->setUid('event-uid');
+            $eventOne = new CalendarEvent();
+            $eventOne->setStart(new \DateTime())
+                ->setSummary('Family reunion')
+                ->setUid('event-uid');
 
-        //add an Attendee
-        $attendee = new Attendee($this->formatter); // or $formatter
-        $attendee->setValue('moe@example.com')
-            ->setName('Moe Smith');
-        $eventOne->addAttendee($attendee);
+            //add an Attendee
+            $attendee = new Attendee($formatter);
+            $attendee->setValue('moe@example.com')
+                ->setName('Moe Smith');
+            $eventOne->addAttendee($attendee);
 
+            // Add event to CalendarExport
+            $calendarExport->setCalendars( [
+                (new Calendar)->setTimezone( new DateTimeZone(date_default_timezone_get()) )
+                    ->addEvent( $eventOne )
+            ] );
             
             $response = new Response($calendarExport->getStream());
             $response->headers->set('Content-Type', 'text/calendar');
